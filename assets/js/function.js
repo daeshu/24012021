@@ -11,11 +11,11 @@
     function success() {
       form.reset();
       button.style = "display: none ";
-      status.innerHTML = "Thanks!";
+      status.innerHTML = "Tu mensaje se ha enviado!";
     }
 
     function error() {
-      status.innerHTML = "Oops! There was a problem.";
+      status.innerHTML = "Ups! Hubo un problema";
     }
 
     // handle the form submission event
