@@ -1,48 +1,45 @@
-$(document).ready(function() {
+  window.addEventListener("DOMContentLoaded", function() {
 
-// Navigation
-$('.navigation').on('click', function(e){
-	e.preventDefault();
-	$(this).addClass('open');
-	$('.sidebar').toggleClass('open');
+    // get the form elements defined in your form HTML above
+    
+    var form = document.getElementById("my-form");
+    var button = document.getElementById("my-form-button");
+    var status = document.getElementById("my-form-status");
 
-	if ($('.sidebar').hasClass('open')) {
-		$('.menu-close').on('click', function(e){
-			e.preventDefault();
-			$('.sidebar').removeClass('open');
-		});
-	}
-});
+    // Success and Error functions for after the form is submitted
+    
+    function success() {
+      form.reset();
+      button.style = "display: none ";
+      status.innerHTML = "Thanks!";
+    }
 
-// Send to Formspree
-$('.contact-form').on('submit', function(e) {
-		e.preventDefault();
+    function error() {
+      status.innerHTML = "Oops! There was a problem.";
+    }
 
-		//get the name field value
-		var name = $('#name').val();
-		//get the name field value
-		var email = $('#email').val();
-		//get the comments
-		var comments = $('#comments').val();
+    // handle the form submission event
 
-		$.ajax({
-				url:'https://formspree.io/info@escobar.eu.org',
-				method:'POST',
-				data:{
-						name:name,
-						_replyto:email,
-						comments:comments,
-						_subject:'Revisar mensaje a escobar',
-				},
-				dataType:"json",
-				success:function() {
-						console.log('success');
-						$('.formBlock').hide();
-						$('.thankyouBlock').show();
-				}
+    form.addEventListener("submit", function(ev) {
+      ev.preventDefault();
+      var data = new FormData(form);
+      ajax(form.method, form.action, data, success, error);
+    });
+  });
+  
+  // helper function for sending an AJAX request
 
-		});
-
-});
-
-});
+  function ajax(method, url, data, success, error) {
+    var xhr = new XMLHttpRequest();
+    xhr.open(method, url);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState !== XMLHttpRequest.DONE) return;
+      if (xhr.status === 200) {
+        success(xhr.response, xhr.responseType);
+      } else {
+        error(xhr.status, xhr.response, xhr.responseType);
+      }
+    };
+    xhr.send(data);
+  }
