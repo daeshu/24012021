@@ -113,26 +113,31 @@
                         <h2>Contacto</h2>
                     </div>
                     <div class="contact-form">
-                        <form class="formBlock contact-form">
+                        <form class ="formBlock contact-form">
+                            <fieldset>
+                                <legend></legend>
                                 <div class="form-item">
-                                <input type="text" name="name" id="name" class="form-control" required data-error="Escribe tu nombre" placeholder="Nombre">
-                                <div class="help-block with-errors"></div>
+                                    <label for="itemName">Nombre:</label>
+                                    <input id="name" type="text" name="name" placeholder="Tu nombre" required>
                                 </div>
                                 <div class="form-item">
-                                <input type="email" name="email" id="email" class="form-control" required data-error="Escribe tu email" placeholder="Email">
-                                <div class="help-block with-errors"></div>
+                                    <label for="itemEmail">E-mail:</label>
+                                    <input id="email" type="email" placeholder="Tu E-mail" required>
                                 </div>
                                 <div class="form-item">
-                                <textarea name="message" class="form-control" id="message" cols="30" rows="5" required data-error="Escribe un mensaje" placeholder="Mensaje"></textarea>
-                                <div class="help-block with-errors"></div>
+                                    <label for="itemMessage">Mensaje:</label>
+                                    <textarea id="comments" type="text" name="message" placeholder="Mensaje" required></textarea>
                                 </div>
                                 <div class="form-item">
-                                <button type="submit" value="send" class="form-btn">Enviar</button>
+                                    <button type="submit" value="Send" class="form-btn">Enviar</button>
+                                    <br>
                                 </div>
-                            <!--<div id="msgSubmit" class="h3 text-center hidden"></div>-->
-                            <div class="clearfix"></div>
+                            </fieldset>
                         </form>
-                        <p>i</p>
+                        <div class="thankyouBlock">
+                            <p>Gracias por usar el formulario, se te responderá en breve a la dirección de e-mail brindada.</p>
+                        </div>
+                        <p>j</p>
                     </div>
 
                     <div class="contact-info">
